@@ -1,0 +1,1481 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Frijole&family=Noto+Sans+Linear+B&family=Poller+One&display=swap" rel="stylesheet">
+✅ ¿Quieres una versión con desplazamiento automático (scroll horizontal)?
+
+
+
+
+
+:root {
+    --color-primario: #2e8b57;
+    --color-secundario: #66cdaa;
+    --color-terciario: #20b2aa;
+    --color-blanco: #ffffff;
+    --color-negro: #0c0b0b;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-primario);
+  font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+  
+}
+
+/* Header principal */
+
+.header {
+    background: linear-gradient(135deg, var(--color-primario) 0%, var(--color-secundario) 50%, var(--color-terciario) 100%);
+    color: var(--color-blanco);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 15px rgba(46, 139, 87, 0.2);
+}
+
+/* Efecto de brillo sutil en el header */
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    animation: headerShine 12s infinite;
+}
+
+
+@keyframes headerShine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Container mejorado */
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 15px 40px;
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Información de contacto */
+.header-info {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: "Playfair Display", serif;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 5px 10px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.contact-item:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.contact-item .icon {
+    font-size: 1.2rem;
+    filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3));
+}
+
+.contact-item .text {
+    font-size: 0.95rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    letter-spacing: 0.5px;
+}
+
+/* Botones de acción */
+.header-cta {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.emergency-btn,
+.appointment-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    font-family: "Playfair Display", serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    font-size: 0.9rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+/* Botón de emergencia */
+.emergency-btn {
+    background: linear-gradient(45deg, #dc3545, #e74c3c);
+    color: white;
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+    animation: emergencyPulse 2s infinite;
+}
+
+.emergency-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4);
+}
+
+@keyframes emergencyPulse {
+    0%, 100% { box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3); }
+    50% { box-shadow: 0 4px 20px rgba(220, 53, 69, 0.5); }
+}
+
+/* Botón de cita */
+.appointment-btn {
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--color-primario);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+.appointment-btn:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+}
+
+/* Efecto de ondas en los botones */
+.emergency-btn::before,
+.appointment-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;  
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.emergency-btn:active::before,
+.appointment-btn:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        text-align: center;
+    }
+    
+    .header-info {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+    }
+    
+    .contact-item {
+        justify-content: center;
+        width: 100%;
+        padding: 10px;
+    }
+    
+    .header-cta {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+    
+    .emergency-btn,
+    .appointment-btn {
+        width: 100%;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-info {
+        gap: 10px;
+    }
+    
+    .contact-item .text {
+        font-size: 0.85rem;
+    }
+    
+    .emergency-btn,
+    .appointment-btn {
+        font-size: 0.85rem;
+        padding: 12px;
+    }
+}
+
+/* Mejora adicional: línea decorativa inferior */
+
+.header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+    animation: bottomGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes bottomGlow {
+    from { opacity: 0.3; }
+    to { opacity: 1; }
+}
+
+/* ========== ESTRUCTURA GENERAL ========== */
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 15px 40px;
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    z-index: 2;
+}
+
+/* ========== LOGO ========== */
+
+.logo {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-blanco);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    letter-spacing: 1px;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+/* ========== NAVBAR ========== */
+
+.navbar {
+    background: linear-gradient(135deg, #2e8b57, #66cdaa, #20b2aa);
+    font-family: var(--fuente-principal);
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    box-shadow: 0 4px 20px rgba(46, 139, 87, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.navbar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    animation: navbarShine 8s infinite;
+    z-index: 0;
+}
+
+@keyframes navbarShine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* ========== MENÚ DE NAVEGACIÓN ========== */
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    z-index: 2;
+}
+
+.menu li {
+    position: relative;
+}
+
+.menu a {
+    display: block;
+    padding: 12px 22px;
+    font-weight: 600;
+    color: var(--color-blanco);
+    text-decoration: none;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    z-index: 1;
+}
+
+.menu a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.1);
+    transition: left 0.4s ease;
+    z-index: -1;
+}
+
+.menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #ffffff, #f0f8ff);
+    transform: translateX(-50%);
+    border-radius: 2px;
+    transition: width 0.4s ease;
+}
+
+.menu a:hover {
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    transform: translateY(-2px);
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+}
+
+.menu a:hover::before {
+    left: 0;
+}
+
+.menu a:hover::after {
+    width: 80%;
+}
+
+/* ========== TITULO ESTILIZADO ========== */
+
+.titulo1 {
+    font-family: var(--fuente-secundaria);
+    font-weight: 700;
+    font-size: 3rem;
+    text-align: center;
+    background: linear-gradient(45deg, #2e8b57, #66cdaa, #20b2aa);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    letter-spacing: 3px;
+    margin: 20px 0;
+}
+
+/* ========== INFORMACIÓN DE CONTACTO ========== */
+
+.header-info {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--fuente-principal);
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+    transform: translateY(-2px);
+    background: rgba(255,255,255,0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.contact-item .icon {
+    font-size: 1.2rem;
+    filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3));
+}
+
+.contact-item .text {
+    font-size: 0.95rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    letter-spacing: 0.5px;
+}
+
+/* ========== BOTONES CTA ========== */
+
+.header-cta {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.emergency-btn,
+.appointment-btn {
+    padding: 10px 22px;
+    border: none;
+    border-radius: 25px;
+    font-family: var(--fuente-principal);
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.95rem;
+    position: relative;
+    overflow: hidden;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.emergency-btn {
+    background: linear-gradient(45deg, #dc3545, #e74c3c);
+    color: #fff;
+    animation: emergencyPulse 2s infinite;
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+}
+
+.emergency-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4);
+}
+
+.appointment-btn {
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--color-primario);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+.appointment-btn:hover {
+    background: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255,255,255,0.3);
+}
+
+/* EFECTO DE ONDA EN CLIC */
+
+.emergency-btn::before,
+.appointment-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.emergency-btn:active::before,
+.appointment-btn:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+
+.titulo1 {
+  font-family: "Inconsolata", monospace;
+  font-optical-sizing: auto;
+  font-weight:700;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  
+  /* Mejoras visuales */
+  font-size: 3rem; /* Tamaño 3 veces el tamaño base */
+  text-align: center; /* Centrado horizontalmente */
+  background: linear-gradient(45deg, #2e8b57, #66cdaa, #20b2aa);/* Crea un degradado de fondo con:
+   45deg: Ángulo de 45 grados
+   #2e8b57: Verde oscuro (Sea Green)
+   #66cdaa: Verde medio (Medium Aquamarine)
+   #20b2aa: Verde azulado (Light Sea Green)*/
+  background-clip: text;/*Le dice al navegador que solo aplique el fondo dentro del área del texto*/
+  -webkit-background-clip: text; 
+  -webkit-text-fill-color: transparent;/*Hace el texto transparente para que se vea el fondo degradado*/
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* 2px 2px: Desplaza la sombra 2px a la derecha y 2px hacia abajo
+   4px: Difumina la sombra (blur)
+   rgba(0,0,0,0.3): Color negro con 30% de opacidad*/
+  letter-spacing: 3px;/* Espacio entre letras */
+  margin: 20px 0; /* Margen arriba y abajo */
+  position: relative;   /* Permite elementos pseudo absolutos */
+}
+
+
+/* Efecto de brillo */
+
+.titulo1::before {
+   content: '';                    /* Elemento vacío */
+  position: absolute;             /* Posicionamiento absoluto */
+  top: 0;                        /* Pegado arriba */
+  left: -100%;                   /* Inicialmente fuera de vista (izquierda) */
+  width: 100%;                   /* Mismo ancho que el título */
+  height: 100%;                  /* Misma altura que el título */
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: shine 3s infinite;   /* Ejecuta animación infinitamente */
+}
+
+@keyframes shine {
+   0% { left: -100%; }    /* Inicia completamente a la izquierda (invisible) */
+  100% { left: 100%; }   /* Termina completamente a la derecha (invisible) */
+}
+
+.container2 {
+
+  background: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 3em;
+  margin: 3em auto;
+  background-color:#66cdaa
+  max-width: 1200px;
+}
+
+.container2 a {
+  flex: 1 1 calc(33.333% - 40px); /* Tres por fila con espacio */
+  min-width: 280px;
+  background-color:white;
+  padding: 20px;
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: var(--color-primario);
+}
+
+.container2 a:hover {
+  transform: translateY(-5px);
+}
+
+/* Menú secundario */
+
+.menu-secundario {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.menu-secundario li {
+    position: relative;
+}
+ /*Esto crea un menú donde los enlaces se ven como botones y cambian de color al pasar el cursor.*/
+
+.menu-secundario a {
+    text-decoration: none;
+    color: var(--color-primario);
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 12px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+    display: block;
+}
+
+.menu-secundario a:hover {
+    background: linear-gradient(45deg, var(--color-primario), var(--color-secundario));
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(46, 139, 87, 0.3);
+}
+
+* Grid layout */
+.contenedor-productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+  background: transparent;
+}
+
+/* Tarjetas dentro del grid */
+.contenedor-productos a {
+  background-color: white;
+  padding: 20px;
+  text-align: center;
+  border-radius: 15px;
+  text-decoration: none;
+  color: var(--color-primario);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.contenedor-productos a:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilo base para todos los productos */
+
+
+.producto1, .producto2, .producto3, .producto4 {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+}
+
+.producto1:hover, .producto2:hover, .producto3:hover, .producto4:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    border-color: var(--color-secundario);
+}
+
+/* Efecto de brillo en productos */
+
+.producto1::before, .producto2::before, .producto3::before, .producto4::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.producto1:hover::before, .producto2:hover::before, .producto3:hover::before, .producto4:hover::before {
+    left: 100%;
+}
+
+/* Galerías de imágenes */
+.galeria1, .galeria2, .galeria3, .galeria4 {
+    width: 100%;
+    height: 200px;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.galeria1 img, .galeria2 img, .galeria3 img, .galeria4 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    border-radius: 15px;
+}
+
+.galeria1:hover img, .galeria2:hover img, .galeria3:hover img, .galeria4:hover img {
+    transform: scale(1.1);
+}
+
+/* Títulos de productos */
+.titulos {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-primario);
+    margin: 15px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.3;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Párrafos descriptivos */
+
+.parrafos {
+    font-size: 1rem;
+    color: #130e0e;
+    line-height: 1.6;
+    text-align: justify;
+    margin: 20px 0;
+    min-height: 100px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Precios */
+.precio {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--color-terciario);
+    margin: 20px 0 10px 0;
+    text-align: center;
+    background: linear-gradient(45deg, var(--color-terciario), var(--color-secundario));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Efectos especiales para productos específicos */
+.producto1 {
+    border-top: 4px solid #ff6b6b;
+}
+
+.producto2 {
+    border-top: 4px solid #4ecdc4;
+}
+
+.producto3 {
+    border-top: 4px solid #45b7d1;
+}
+
+.producto4 {
+    border-top: 4px solid #96ceb4;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contenedor-productos {
+        padding: 30px 15px;
+    }
+    
+    .titulos2 {
+        font-size: 2rem;
+        margin-bottom: 25px;
+    }
+    
+    .container2 {
+        margin-bottom: 30px;
+        padding: 15px;
+    }
+    
+    .menu-secundario {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .menu-secundario a {
+        padding: 10px 15px;
+        font-size: 1rem;
+    }
+    
+    .contenedor-productos .contenedor-productos {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .producto1, .producto2, .producto3, .producto4 {
+        padding: 20px;
+    }
+    
+    .galeria1, .galeria2, .galeria3, .galeria4 {
+        height: 180px;
+    }
+    
+    .titulos {
+        font-size: 1.2rem;
+        min-height: 50px;
+    }
+    
+    .parrafos {
+        font-size: 0.9rem;
+        min-height: 70px;
+    }
+    
+    .precio {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .titulos2 {
+        font-size: 1.8rem;
+    }
+    
+    .contenedor-productos {
+        padding: 20px 10px;
+    }
+    
+    .producto1, .producto2, .producto3, .producto4 {
+        padding: 15px;
+    }
+    
+    .galeria1, .galeria2, .galeria3, .galeria4 {
+        height: 160px;
+        margin-bottom: 15px;
+    }
+    
+    .titulos {
+        font-size: 1.1rem;
+        min-height: 45px;
+    }
+    
+    .parrafos {
+        font-size: 0.85rem;
+        min-height: 60px;
+    }
+}
+
+/* Animación de entrada */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.producto1, .producto2, .producto3, .producto4 {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.producto1 { animation-delay: 0.1s; }
+.producto2 { animation-delay: 0.2s; }
+.producto3 { animation-delay: 0.3s; }
+.producto4 { animation-delay: 0.4s; }
+
+
+
+/* Animación de gradiente en movimiento */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Animación de flotación sutil */
+@keyframes titleFloat {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-5px); }
+}
+
+/* Título veterinario */
+h2.titulos2 {
+   font-weight: 400;
+   font-style: normal; ;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 800;
+    font-family: "Caprasimo", serif
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    margin: 60px auto 30px;
+    background: linear-gradient(90deg, #7ec850, #41b883, #34a0a4);
+    background-size: 200% auto;
+    color:#66cdaa;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: gradientMove 6s linear infinite;
+    text-shadow: 0 1px 0 #fff, 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Línea decorativa con huella */
+h2.titulos2::after {
+    content: '🐾';
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    color: #41b883;
+    animation: pawBounce 2s infinite;
+}
+
+/* Efecto de brillo */
+h2.titulos2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    animation: shineSweep 3s infinite;
+}
+
+/* Animaciones */
+@keyframes gradientMove {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+@keyframes pawBounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-5px); }
+}
+
+@keyframes shineSweep {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    h2.titulos2 {
+        font-size: 2.2rem;
+    }
+
+    h2.titulos2::after {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h2.titulos2 {
+        font-size: 1.8rem;
+        letter-spacing: 1px;
+    }
+
+    h2.titulos2::after {
+        font-size: 1.4rem;
+    }
+}
+
+.contenedor-productos {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);/*Sirve para aplicar un fondo degradado lineal (gradient) a un elemento HTML, como un div, section, body, etc.*/
+  padding: 40px  20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; /*crear espacio (separación) entre elementos hijos dentro de un contenedor que usa flexbox o grid.*/
+  margin: 20px 0;
+}
+
+.producto1, .producto2, .producto3, .producto4, .producto5 {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+  width: 250px;
+  text-align: center;
+}
+
+.producto1 img, .producto2 img, .producto3 img, .producto4 img, .producto5 img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.galeria1 img, .galeria2 img, .galeria3 img, .galeria4 img, .galeria5 img {
+  width: 250px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.producto1 h3, .producto2 h4, .producto3 h5, .producto4 h6, .producto5 h6 {
+  font-size: 18px;
+  margin: 10px 0;
+  line-height: 1.2;
+  height: 50px;
+  overflow: hidden;
+}
+
+.producto1 p, .producto2 p, .producto3 p, .producto4 p, .producto5 p {
+  font-size: 0.95em;
+  color: #080808;
+  font-family: "Arimo", sans-serif;
+}
+
+.titulos {
+  text-align: center;
+  font-size: 20px;
+  color: #010407;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.parrafos {
+  text-align: justify;
+  font-size: 20px;
+  color: rgb(131, 29, 29);
+}
+
+.productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.protector {
+  display: flex;
+  gap: 5em;
+}
+
+.protector img {
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+  transition: transform 0.3s, filter 0.3s;
+  border-radius: 8px;
+}
+
+.protector:hover {
+  background-color: #d35400;
+  transform: scale(1.05);
+}
+
+.bravecto:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+.img2:hover {
+  transform: rotate(10deg);
+  filter: contrast(1.3);
+}
+
+.img3:hover {
+  transform: translateY(-10px);
+  filter: grayscale(0.5);
+}
+
+.contenedor-menu2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 8em;
+  max-width: 100em;
+  margin: 0 auto;
+}
+
+.pulgas1 {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 8px rgba(150, 12, 224, 0.1);
+  cursor: pointer;
+}
+
+.pulgas1:hover {
+  background-color: #2DF05E;
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+img {
+  width: 10em;
+  height: 10em;
+}
+
+.tarjeta-producto {
+  width: 350px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.menu-interno {
+  background-color: #333;
+  color: white;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.menu-interno a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.menu-interno a:hover {
+  color: #ffc107;
+}
+
+.tarjeta-producto img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.contenido-producto1 {
+  padding: 20px;
+  text-align: center;
+}
+
+.contenido-producto1 h2 {
+  margin: 0 0 10px;
+  font-size: 22px;
+}
+
+.contenido-producto1 p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+.botones1 {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.boton {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: 'Playfair Display', serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Estilos únicos para cada botón */
+.boton.opcion {
+  background: #66cdaa;
+  color: rgb(3, 3, 3);
+}
+
+.boton.cantidad {
+  background: #66cdaa;
+  color: rgb(3, 3, 3);
+}
+
+.boton.comprar {
+  background: #66cdaa;
+  color:rgb(3, 3, 3);
+}
+
+/* Hover */
+.boton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .botones1 {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .boton {
+    width: 80%;
+    text-align: center;
+  }
+}
+ 
+ .carousel {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-inner {
+  display: flex;
+  width: 200%; /* Doble del contenedor */
+  animation: scroll 30s linear infinite;
+}
+
+.slide {
+  flex: 0 0 12.5%; /* 100% / 8 slides (4 originales + 4 duplicados) */
+  position: relative;
+}
+
+.slide img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+}
+
+.texto {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px 30px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.texto h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.texto p {
+  font-size: 1.2rem;
+}
+
+.carousel { 
+
+ overflow: hidden;     /* Oculta todo lo que sobresalga del contenedor */
+  width: 100%;         /* Ocupa todo el ancho disponible */
+  height: 400px;       /* Altura fija del carrusel */
+  position: relative;  /* Permite posicionamiento absoluto de elementos hijos */
+}
+
+.carousel-inner {
+
+  display: flex;              /* Alinea las slides horizontalmente */
+  width: 200%;               /* El doble del ancho visible */
+  animation: scroll 24s linear infinite; /* Animación continua */
+}
+
+.slide { 
+  
+  flex: 0 0 25%;    /* Cada slide ocupa 1/3 del ancho visible */
+  position: relative;   /* Para posicionar el texto encima */
+}
+
+.slide img {
+
+  width: 100%;        /* Ocupa todo el ancho de su slide */
+  height: 400px;      /* Altura fija igual al contenedor */
+  object-fit: cover;  /* Mantiene proporción, recorta si es necesario */
+}
+
+.slide .texto {
+  position: absolute;              /* Se posiciona encima de la imagen */
+  top: 50%;                       /* 50% desde arriba */
+  left: 50%;                      /* 50% desde la izquierda */
+  transform: translate(-50%, -50%); /* Centra perfectamente */
+  color: white;                   /* Texto blanco */
+  text-align: center;             /* Centrado horizontalmente */
+  text-shadow: 0 4px 10px rgba(0,0,0,0.6); /* Sombra para legibilidad */
+}
+
+/* Animación corregida */
+@keyframes scroll {
+
+  0% { transform: translateX(0); }      /* Posición inicial */
+  100% { transform: translateX(-50%); }  /* Se mueve 50% hacia la izquierda */
+}
+
+
+/* Scrollbar styles (estos están bien) */
+
+::-webkit-scrollbar {
+  width: 10px;  /* Ancho de la barra de scroll */
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px var(--color-primario);  /* Sombra interna en el canal */
+  border-radius: 10px;             /* Bordes redondeados */
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-secundario);         /* Color rojo del "handle" */
+  border-radius: 5px;     /* Bordes redondeados */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5b5959;     /* Color más oscuro al pasar el mouse */
+}
+
+.banner {
+  position: relative;/*Establece una referencia para los elementos absolutos dentro del banner (como la imagen y el texto).*/
+  width: 100%;/*El banner ocupa todo el ancho del contenedor padre.*/
+  height: 400px;/*Altura fija del banner.*/
+  overflow: hidden;/*Oculta el contenido que se desborde, útil para que la imagen y overlays no se salgan del borde.*/
+  border-radius: 20px/* bordes redondeados*/
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /*Un color de fondo de respaldo si no carga la imagen.*/
+  margin: 20px 0;/*Añade espacio arriba y abajo.*/
+}
+
+.banner-imagen {
+   position: absolute;/*Posiciona la imagen encima del contenedor padre (.banner).*/
+    top: 0;La /*imagen comienza en la esquina superior izquierda.*/
+    left: 0;
+    width: 100%;/*Hace que la imagen ocupe todo el banner.*/
+    height: 100%;/*Hace que la imagen ocupe todo el banner.*/
+    object-fit: cover;/*Asegura que la imagen cubra todo el espacio, recortando si es necesario, sin deformarse.*/
+    z-index: 1;/*Controla el orden de capas; la imagen está detrás del texto y del overlay.*/
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);/*Crea una capa oscura transparente encima de la imagen para mejorar la visibilidad del texto.
+                                    rgba(0, 0, 0, 0.5): Negro al 50% de opacidad.*/
+  z-index: 2;/*Se coloca encima de la imagen, pero debajo del texto.*/
+}
+
+.texto-banner {
+  position: absolute; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  padding: 20px;
+  box-sizing: border-box;
+}
+/*Posiciona el texto en el centro del banner:
+top: 50%; left: 50%; lo pone en el centro del banner.
+transform: translate(-50%, -50%) lo ajusta para que el centro del bloque quede centrado visualmente.
+z-index: 3;: Está por encima de todo (imagen y overlay).
+text-align: center;: Centra el contenido dentro del bloque.
+width: 90% y max-width: 500px: Para que sea responsivo, se adapta a pantallas más pequeñas.*/
+
+.contenido-promocion {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 30px 40px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  border: 2px solid #3498db;
+  max-width: 500px;
+  width: 90%;
+}
+
+/*Crea una caja blanca translúcida que contiene el texto y el botón.
+padding: 30px;: Espacio interno generoso.
+border-radius: Bordes redondeados como el banner.
+box-shadow: Sombra para que se eleve visualmente sobre el fondo.*/
+
+.descuento {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #e74c3c;
+  margin: 0 0 10px 0;
+  line-height: 1;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+/*Estilo para el texto principal del descuento.
+font-size: 2.5rem;: Texto grande.
+font-weight: bold;: Negrita.
+color: #e74c3c;: Rojo intenso que llama la atención.
+margin: Separación con el párrafo siguiente.*/
+
+
+.descripcion {
+  font-size: 1.2rem;
+  color: #2c3e50;
+  margin: 0 0 20px 0;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+/*Estilo para el texto descriptivo debajo del descuento.
+Color gris oscuro (#333) para buena legibilidad.
+margin: Espacio hacia abajo, antes del botón.*/
+
+.btn-promocion {
+  background: linear-gradient(45deg, #e74c3c, #c0392b);
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/*Estilo del botón:
+Rojo brillante de fondo, blanco de texto.
+Sin bordes.
+Bordes redondeados tipo "píldora" (border-radius: 25px;).
+Cambia a un tono más oscuro al pasar el mouse (hover).
+cursor: pointer;: Muestra la mano al pasar sobre el botón.*/
+
+.btn-promocion:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .banner {
+    height: 300px;
+  }
+  
+  .contenido-promocion {
+    padding: 25px 30px;
+    width: 95%;
+  }
+  
+  .descuento {
+    font-size: 2rem;
+  }
+  
+  .descripcion {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner {
+    height: 250px;
+    margin: 15px 0;
+  }
+  
+  .contenido-promocion {
+    padding: 20px 25px;
+  }
+  
+  .descuento {
+    font-size: 1.8rem;
+  }
+  
+  .descripcion {
+    font-size: 1rem;
+  }
+  
+  .btn-promocion {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
