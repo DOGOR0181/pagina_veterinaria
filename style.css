@@ -13,6 +13,14 @@
     --color-terciario: #20b2aa;
     --color-blanco: #ffffff;
     --color-negro: #0c0b0b;
+    --bg: #0f1724; /* fondo del contenedor */
+    --accent-1: #00d1b2; /* verde-azulado */
+    --accent-2: #ff6b6b; /* coral para corazón */
+    --muted: #a6b0c3;
+    --glass: rgba(255,255,255,0.06);
+    --shadow: 0 10px 30px rgba(2,6,23,0.6);
+    --max-width: 900px;
+     --radius: 18px;
 }
 
 
@@ -139,15 +147,16 @@ body {
 
 /* Botón de emergencia */
 .emergency-btn {
-    background: linear-gradient(45deg, #dc3545, #e74c3c);
+    display: inline-block;
+    background: linear-gradient(45deg, #b92f05, #e74804);
     color: white;
-    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+    box-shadow: 0 4px 15px rgba(2, 1, 1, 0.3);
     animation: emergencyPulse 2s infinite;
 }
 
 .emergency-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4);
+    box-shadow: 0 6px 20px rgba(86, 220, 53, 0.4);
 }
 
 @keyframes emergencyPulse {
@@ -272,18 +281,76 @@ body {
 }
 
 /* ========== LOGO ========== */
-
-.logo {
-    font-size: 2rem;
-    font-weight: 800;
-    color: var(--color-blanco);
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    letter-spacing: 1px;
-    transition: transform 0.3s ease;
+/* === LOGO VITALPET CON BOTÓN PEQUEÑO ABAJO === */
+/* Logo + botón centrado */
+.logo-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
 }
 
-.logo:hover {
-    transform: scale(1.05);
+/* Ajuste del logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-icon {
+  width: 55px;
+  height: 55px;
+}
+
+.logo-text h1 {
+  font-size: 1.5rem;
+  margin: 0;
+  color: var(--color-blanco);
+}
+
+.logo-text .vital {
+  color: var(--color-primario);
+}
+
+.logo-text .pet {
+  color: var(--color-secundario);
+}
+
+.logo-text .slogan {
+  font-size: 0.8rem;
+  margin-top: 3px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* === Botón de emergencia debajo del logo === */
+.emergency-below {
+  margin-top: 8px;
+}
+
+.emergency-below .emergency-btn {
+  padding: 5px 15px;
+  font-size: 0.8rem;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(45deg, #dc3545, #e74c3c);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(220, 53, 69, 0.3);
+  transition: all 0.3s ease;
+}
+
+.emergency-below .emergency-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(220, 53, 69, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .logo-area {
+    margin-bottom: 10px;
+  }
 }
 
 /* ========== NAVBAR ========== */
@@ -818,10 +885,11 @@ body {
         font-size: 1.5rem;
     }
 }
-
+ 
 @media (max-width: 480px) {
     .titulos2 {
         font-size: 1.8rem;
+      
     }
     
     .contenedor-productos {
@@ -885,6 +953,7 @@ body {
 }
 
 /* Título veterinario */
+
 h2.titulos2 {
    font-weight: 400;
    font-style: normal; ;
@@ -1213,7 +1282,7 @@ img {
 .carousel-inner {
   display: flex;
   width: 200%; /* Doble del contenedor */
-  animation: scroll 30s linear infinite;
+  animation: scroll 10s linear infinite;
 }
 
 .slide {
@@ -1248,6 +1317,51 @@ img {
 .texto p {
   font-size: 1.2rem;
 }
+ 
+.section-vendidos {
+
+  font-family: "Poppins", sans-serif;
+  font-size: 3rem; /* 🔹 Aumenta tamaño (ajusta a gusto: 3rem ≈ 48px) */
+  font-weight: 800; /* 🔹 Más grueso */
+  color: #2e8b57; /* 🔹 Verde elegante (puedes cambiarlo) */
+  text-align: left; /* 🔹 a la izquierda  */
+  text-transform: uppercase; /* 🔹 Mayúsculas */
+  letter-spacing: 3px; /* 🔹 Espaciado entre letras */
+  margin: 2rem 0; /* 🔹 Separación arriba y abajo */
+  position: relative;/* se usa para desplazar un elemento desde su posición original, sin alterar el diseño de los demás
+   elementos de la página, que seguirán ocupando el espacio que les corresponde*/
+  z-index: 5;/*para controlar el orden de apilamiento de elementos
+   que se superponen, determinando qué elemento aparece delante y cuál detrás*/
+     background: linear-gradient(90deg, #2e8b57, #66cdaa, #20b2aa);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: brilloIzquierda 4s linear infinite;
+}
+
+/* Efecto de movimiento del degradado desde la izquierda */
+@keyframes brilloIzquierda {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 100% 50%;
+  }
+}
+
+
+/* 🔹 (Opcional) efecto visual sutil */
+
+.section-vendidos::after {
+  content: "";
+  display: block;
+  width: 500px;
+  height: 4px;
+  background: linear-gradient(90deg, #2e8b57, #66cdaa);
+  margin: 0.5rem auto 0;
+  border-radius: 10px;
+}
+
 
 .carousel { 
 
@@ -1455,8 +1569,10 @@ cursor: pointer;: Muestra la mano al pasar sobre el botón.*/
   }
 }
 
-@media (max-width: 480px) {
-  .banner {
+@media (max-width: 480px) 
+
+.banner{
+
     height: 250px;
     margin: 15px 0;
   }
@@ -1477,5 +1593,376 @@ cursor: pointer;: Muestra la mano al pasar sobre el botón.*/
     padding: 10px 20px;
     font-size: 0.9rem;
   }
+
+
+/* Contenedor principal */
+
+
+ .contenedor-cifras {
+   display: flex ; 
+   justify-content: center;
+   flex-direction: column;
+   align-items: center;
+   padding: 40px 20px;
+   gap: 40px;
+ }
+
+ .titulos-cifras {
+  font-size: 60px;
+  text-align: center;
+  font-family: var(--fuente-secundaria);
+  color:#2e8b57;
+  margin-bottom: 20px;
+
+
+ }
+  /* Contenedor de las columnas */
+
+
+ .columnas-cifras{
+  
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  width: 100%;
+  background-color:white;
+  
+ }
+
+ /* Cada columna individual */
+
+/*El símbolo > se llama selector hijo directo.
+Significa “solo aplica los estilos a 
+los elementos div que están directamente dentro de .columnas-cifras, no a los div más profundos dentro de esos”.*/
+
+.columnas-cifras > div {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  width: 200px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Imagen dentro de cada columna */
+.columnas-cifras img {
+  display: block;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin: 0 auto 10px auto; /* centrada y con espacio inferior */
+}
+
+/* Títulos y párrafos dentro de cada columna */
+.columnas-cifras h4,
+.columnas-cifras h6,
+.columnas-cifras p {
+  margin: 8px 0;
+  color: #333;
+}
+
+.contenedor-contacto {
+  background: #f5fffa;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.columna-contactos {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.columna-contactos > div {
+  background-color: white;
+  border-radius: 10px;
+  padding: 30px 20px;
+  width: 300px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.columna-contactos > div:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(46, 139, 87, 0.3);
+}
+
+.columna-contactos img {
+  display: block;
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin: 0 auto 15px auto;
+}
+
+.columna-contactos h3 {
+  color: #2e8b57;
+  font-family: var(--fuente-secundaria);
+  margin-bottom: 10px;
+}
+
+.columna-contactos p {
+  font-size: 1rem;
+  color: #333;
+  margin: 5px 0;
+}
+
+.btn {
+
+  
+  display: inline-block;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+
+.btn-primary {
+
+  background-color: #25d366; /* Verde típico de WhatsApp */
+  color: white;
+  font-weight: bold;
+}
+
+
+.btn-primary:hover {
+
+  background-color: #1ebe5d;
+  transform: scale(1.05);
+}
+
+/* GUARDERIA*/
+
+.banner1 {
+  position: relative;
+  width: 100%;
+  height: 500px; /* 🔹 aumenté el tamaño del banner (antes 400px) */
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  margin: 20px 0;
+}
+
+.banner1-imagen {
+  position: absolute;
+  top: 50%; /* 🔹 centramos verticalmente */
+  left: 50%;
+  width: 100%; /* 🔹 la imagen es un poco más pequeña que el banner visualmente */
+  height: 100%;
+  object-fit: cover; /* 🔹 evita que se recorte la imagen */
+  transform: translate(-50%,-50%); /* 🔹 centra la imagen */
+  z-index: 1;
+  border-radius: 20px;
+}
+
+
+/* Capa oscura encima de la imagen */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 2;
+}
+
+/* Contenedor del texto centrado */
+.texto-banner1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Caja blanca con el contenido del texto y botón */
+.contenido-promocion1 {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 30px 40px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  border: 2px solid #3498db;
+  max-width: 500px;
+  width: 90%;
+}
+
+/* Texto del descuento */
+.descuento1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #e74c3c;
+  margin: 0 0 10px 0;
+  line-height: 1;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Descripción */
+.descripcion1 {
+  font-size: 1.2rem;
+  color: #2c3e50;
+  margin: 0 0 20px 0;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+/* Botón */
+.btn-promocion1 {
+  background: linear-gradient(45deg, #e74c3c, #c0392b);
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-promocion1:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .banner1 {
+    height: 300px;
+  }
+
+  .contenido-promocion1 {
+    padding: 25px 30px;
+    width: 95%;
+  }
+
+  .descuento1 {
+    font-size: 2rem;
+  }
+
+  .descripcion1 {
+    font-size: 1.1rem;
+  }
+}
+
+/* ← Aquí estaba el error: faltaban llaves {} */
+@media (max-width: 480px) {
+
+  .banner1 {
+    height: 250px;
+    margin: 15px 0;
+  }
+}
+
+.contenedor-somos{
+
+  text-align: center;
+  padding: 5px;
+  background-color: #25d366;
+  
+}
+
+.titulos-somos{
+  
+  font-size: 2rem;
+  color:#2e8b57;
+  margin-bottom: 30px;
+  font-family: var(--fuente-secundaria);
+
+
+}
+
+.columnas-somos div{
+
+ max-width: 800px;
+ margin: 0 auto;
+
+}
+
+.columnas-somos img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+
+}
+
+.columnas-somos p {
+
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #3b3c3d;
+  text-align: justify;
+
+}
+
+.contenedor-cifras {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #f9f9f9;
+}
+
+.titulos-cifras {
+  font-size: 2.8rem;
+  color: #2e8b57;
+  margin-bottom: 40px;
+  font-family: var(--fuente-secundaria, 'Poppins', sans-serif);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Contenedor flexible que acomoda las imágenes */
+.columnas-cifras {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px; /* mayor separación entre imágenes */
+}
+
+/* Cada columna */
+.columnas-cifras div {
+  flex: 1 1 250px; /* más grande por defecto */
+  max-width: 300px;
+  text-align: center;
+}
+
+/* Imágenes más grandes y con mejor proporción */
+.columnas-cifras img {
+  width: 100%;
+  height: 250px; /* ajusta el tamaño de las imágenes */
+  object-fit: cover; /* mantiene proporción sin deformar */
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto al pasar el mouse */
+.columnas-cifras img:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .columnas-cifras div {
+    max-width: 90%;
+  }
+  .columnas-cifras img {
+    height: 220px;
+  }
+}
